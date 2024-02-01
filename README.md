@@ -22,7 +22,7 @@ Animate the didplay of file text content
    ```
 4.Install the package:
    ```shell
-   pip install .
+   pip install ./
    ```
 
 
@@ -31,7 +31,7 @@ Animate the didplay of file text content
 To run the CLI app, use the following command:
 
 ```shell
-AFReade [options] input_file speed
+AFReader [options] input_file speed
 ```
 
 Replace `[options]` with the appropriate command-line options based on the functionality you want to execute.
@@ -46,13 +46,22 @@ Replace `[options]` with the appropriate command-line options based on the funct
 1. Example command 1:
 
    ```shell
-   AFReader -i example.txt  or `AFReader --input_file example.txt
+   AFReader -i example.txt
    ```
-1. Example command 1:
+2. Example 2:
+```shell
+AFReader --input_file example.txt
+```
+3. Example command 3:
 
    ```shell
-   AFReader -i example.txt -s 0.0001  or `AFReader --input_file example.txt --speed 0.0001
+
+   AFReader -i example.txt -s 0.0001
    ```
+3. Example 4:
+```shell
+   AFReader --input_file example.txt --speed 0.0001
+```
 
 ## Contributing
 
