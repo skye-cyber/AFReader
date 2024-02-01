@@ -9,12 +9,11 @@ setup(
     long_description_content_type='text/markdown',
     entry_points={
         'console_scripts': [
-            "AFReader=main:main"],
+            "AFReader=AFReader:main"],
     },
     python_requires='>=3.6',
     install_requires=[
-        'argparse',
-        'curses'
+        'argparse'
     ],
     include_package_data=True,
     license="MIT",

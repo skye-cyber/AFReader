@@ -1,0 +1,10 @@
+README.md
+setup.py
+AFReader/__init__.py
+AFReader/main.py
+AFReader.egg-info/PKG-INFO
+AFReader.egg-info/SOURCES.txt
+AFReader.egg-info/dependency_links.txt
+AFReader.egg-info/entry_points.txt
+AFReader.egg-info/requires.txt
+AFReader.egg-info/top_level.txt
