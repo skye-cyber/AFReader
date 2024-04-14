@@ -1,7 +1,14 @@
-import curses
-import time
+import os
 import sys
+import subprocess
+import time
 import argparse
+
+try:
+    import curses
+except ImportError:
+    if os.name == "ps":
+        subprocess.run(["python3", "-m", "pip3", "install", "windows-curses"])
 
 
 def typewriter_effect(stdscr, text, speed):
@@ -186,18 +193,32 @@ def interactive_menu(stdscr):
             return selected_option
 
 
-def funcmain(stdscr):
-    # create argument parser
-    parser = argparse.ArgumentParser(description='''Open documents in anymated mode''')
-    parser.add_argument('-i', '--input_file', help='file to to open', required=True)
-    parser.add_argument('-s', '--speed', default=0.001, type=float, help='Text display speed')
+def funcmain(stdscr, cargs):
+    input_file, speed = cargs
 
-    args = parser.parse_args()
-    input_file = args.input_file
-    speed = args.speed
+    if os.path.splitext(input_file)[1].lower().endswith("pdf"):
+        _, ext = os.path.splitext(input_file)
+        txt_file = _ + '.txt'
+        subprocess.run(['fconverter', '5', input_file, txt_file])
+        with open(txt_file, 'r') as file:
+            text_content = file.read()
 
-    with open(input_file, 'r') as file:
-        text_content = file.read()
+    elif os.path.splitext(input_file)[1].lower().endswith("docx"):
+        _, ext = os.path.splitext(input_file)
+        txt_file = _ + '.txt'
+        subprocess.run(['fconverter', '4', input_file, txt_file])
+        with open(txt_file, 'r') as file:
+            text_content = file.read()
+
+    elif os.path.splitext(input_file)[1].lower().endswith("txt"):
+        with open(input_file, 'r') as file:
+            text_content = file.read()
+    else:
+        try:
+            with open(input_file, 'r') as file:
+                text_content = file.read()
+        except Exception:
+            pass
 
     selected_option = interactive_menu(stdscr)
 
@@ -212,13 +233,25 @@ def funcmain(stdscr):
     # Add more conditions for additional animation styles
 
 
+def argsinit():
+    # create argument parser
+    parser = argparse.ArgumentParser(description='''Open documents in anymated mode''')
+    parser.add_argument('-i', '--input_file', help='file to to open', required=True)
+    parser.add_argument('-s', '--speed', default=0.001, type=float, help='Text display/animation speed')
+
+    args = parser.parse_args()
+    input_file = args.input_file
+    speed = args.speed
+    return input_file, speed
+
+
 def main():
     try:
-        curses.wrapper(funcmain)
+        curses.wrapper(funcmain, argsinit())
     except KeyboardInterrupt:
+        print("\nQuit!")
         sys.exit()
 
 
 if __name__ == '__main__':
     main()
-

@@ -1,7 +1,10 @@
 README.md
+requirement.txt
 setup.py
 AFReader/__init__.py
+AFReader/dd.py
 AFReader/main.py
+AFReader/wait4keypress.py
 AFReader.egg-info/PKG-INFO
 AFReader.egg-info/SOURCES.txt
 AFReader.egg-info/dependency_links.txt

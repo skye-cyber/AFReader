@@ -11,16 +11,23 @@ setup(
         'console_scripts': [
             "AFReader=AFReader:main"],
     },
+
     python_requires='>=3.6',
     install_requires=[
-        'argparse'
+        'argparse',
+        'fconverter'
     ],
+
     include_package_data=True,
     license="MIT",
-    keywords='AFReader',
+    keywords=[
+        'AFReader',
+        'animated-filereader',
+        'file-reader'
+    ],
+
     classifiers=[
         "Environment :: Console",
-        "Operating System :: POSIX :: Linux",
         "Natural Language :: English",
         "Operating System :: OS Independent",
         "Programming Language :: Python",

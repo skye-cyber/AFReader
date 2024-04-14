@@ -6,7 +6,7 @@ Animate the didplay of file text content
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/skye-cyber/AFReader
+   git clone https://github.com/skye-cyber/AFReader.git
    ```
 
 2. Navigate to the project directory:

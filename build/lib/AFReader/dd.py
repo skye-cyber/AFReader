@@ -193,7 +193,7 @@ def interactive_menu(stdscr):
             return selected_option
 
 
-def funcmain(stdscr, cargs):
+def main(stdscr, cargs):
     input_file, speed = cargs
 
     if os.path.splitext(input_file)[1].lower().endswith("pdf"):
@@ -245,13 +245,9 @@ def argsinit():
     return input_file, speed
 
 
-def main():
+if __name__ == '__main__':
     try:
-        curses.wrapper(funcmain, argsinit())
+        curses.wrapper(main, argsinit())
     except KeyboardInterrupt:
         print("\nQuit!")
         sys.exit()
-
-
-if __name__ == '__main__':
-    main()
